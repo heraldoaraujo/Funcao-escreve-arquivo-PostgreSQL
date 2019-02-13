@@ -1,0 +1,9 @@
+Escreve duas linhas no arquivo e exibe seu conteúdo. 
+
+psql> select public.f_escreve_arquivo('/var/lib/pgsql','saida.txt','maria','E');
+psql> select f_escreve_arquivo('/var/lib/pgsql','saida.txt','joao','E');
+psql> select f_escreve_arquivo('/var/lib/pgsql','saida.txt',null,'F');
+
+$ cat saida.txt
+maria
+joao

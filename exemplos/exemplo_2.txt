@@ -1,0 +1,17 @@
+do $$
+declare
+ contador  integer := 0;
+ diretorio varchar(100) := '/var/lib/pgsql';
+ arquivo   varchar(30) := 'saida_1.txt';
+
+begin
+ perform public.f_escreve_arquivo(diretorio,arquivo,'Teste simples de escrever no arquivo','E');
+ perform public.f_escreve_arquivo(diretorio,arquivo,'Inicio :'||current_date||' '||current_time,'E');
+ while contador < 10 loop
+     contador := contador + 1;
+     perform public.f_escreve_arquivo(diretorio ,arquivo,cast(contador as varchar),'E');
+ end loop;
+ perform public.f_escreve_arquivo(diretorio,arquivo,'fim :'||current_date||' '||current_time,'E');
+ perform public.f_escreve_arquivo(diretorio ,arquivo,null,'F');
+end;
+$$;
